@@ -12,6 +12,7 @@ const Header = () => {
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </nav>
+            <div className="line"></div>
         </header>
     );
 } 
