@@ -1,5 +1,7 @@
 .Item {
+    background: #FFFFFF;
     float: left;
+    border-radius: 15px;
     height: 250px;
     width: 250px;
     margin-right: 18px;
@@ -7,22 +9,18 @@
     padding: 0;
     transition: all 0.2s ease-in;
     position: relative;
+    transform: translateY(0px);
+    border: none;
 }
 
 .Item:hover {
-    background-color: rgba(255, 255, 255, 0.292);
+    transform: translateY(-10px);
+    background: linear-gradient(180deg, rgba(35, 34, 34, 0.4) 0%, #2e2d2d 200%);
     cursor: pointer;
 }
 
-.Item-img {
-    content: attr(src);
-    width: 0px;
-    height: 0px;
-    /*Bad Bad*/
-}
-
 .Item-text {
-    margin-top: 170px;
+    margin-top: 0px;
     line-height: 28px;
     font-size: 24px;
     font-weight: bold;
@@ -31,6 +29,17 @@
 }
 
 .Item:hover .Item-text {
-    transform: translateY(-85px);
+    transform: translateY(-100px);
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.Item-img {
+    width: 200px;
+    height: 200px;
+}
+
+.Item:hover .Item-img {
+    opacity: 0.35;
     cursor: pointer;
 }
