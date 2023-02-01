@@ -1,15 +1,10 @@
 .MainContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     border: white;
-    /*border-style: solid;*/ /*Just for testing*/
     stroke-width: 10px;
-    /*margin: 10rem;*/
     margin-left: 25%;
     margin-right: 25%;
     margin-top: 6%;
     justify-content: center;
-    justify-items: center;
-    
+    justify-items: left;
 }
