@@ -1,6 +1,23 @@
 from Fraction import Fraction
 from math import log2
 
+def entropy(p, variable_name):
+    '''
+    Returns tuple (text, value)
+    '''
+    text = ""
+
+    text += f"{variable_name} = E({','.join([str(i) for i in p])}) = "
+    
+    e = 0
+    for v in p:
+        text += f"-{str(v)}.log({str(v)}) "
+        e -=  v.get_real_value() * log2(v.get_real_value())
+    
+    text += f"= {e:.4f} bits\n"
+
+    return {'text':text, 'value':e}        
+
 def calculate_start_entropy(y):
 
     sample_size = len(y)
@@ -21,15 +38,12 @@ def calculate_start_entropy(y):
 
     for c in p_y:
         text +=  f"P(y={c}) = {p_y[c]}\t"
+    
     text += "\n"
-    text += f"Estart = E({','.join([str(p_y[c]) for c in p_y])}) = "
-    
-    e_start = 0
-    for v in p_y.values():
-        text += f"-{str(v)}.log({str(v)}) "
-        e_start -=  v.get_real_value() * log2(v.get_real_value())
-    
-    text += f"= {e_start:.4f} bits\n"
+    entropy_out = entropy(p = p_y.values(), variable_name="Estart")
+    text += entropy_out['text']
+    e_start = entropy_out['value']
+
 
     return (e_start, text)
 
