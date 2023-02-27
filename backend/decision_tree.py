@@ -48,8 +48,18 @@ def entropy(p, variable_name):
 
     return {'text':text, 'value':e} 
 
-def sum_of_weighted_entropies(weights, ):
-    
+def sum_of_weighted_entropies(weights, entropies):
+    result = 0
+    text = ''
+
+    for i in range(len(entropies)):
+        result += weights[i] * entropies[i]
+        text += f'{weights[i]:.3}*{entropies[i]:.3}'
+        if i != len(entropies) - 1:
+            text += ' + '
+    text += ' = '
+    text += f'{result}'
+    return {'text':text, 'result': result}    
 
 
 def count_by_type(l):
@@ -82,6 +92,7 @@ def calculate_start(y, function):
         text +=  f"P(y={c}) = {p_y[c]}\t"
     
     text += "\n"
+    text += f"E{attribute} = "
     entropy_out = function(p = p_y.values(), variable_name="Estart")
     text += entropy_out['text']
     e_start = entropy_out['value']
@@ -124,8 +135,9 @@ def calculate_something(x, y, attribute):
         entropies.append(e['value'])
         weights.append(Fraction(w, total))
 
-    sum_of_weighted_entropies(weights, entropies, attribute)
-
+    res = sum_of_weighted_entropies(weights, entropies, attribute)
+    text += res['text']
+    result = res['result']
         
             
 
